@@ -1,15 +1,25 @@
-import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import FoodItem from "./FoodItemCart";
 
-import store from "../Utils/Store";
+
 
 
 
 const Cart=()=>{
+
+    const cartItems=useSelector((store)=>store.cart.items)
     
     return(
-        <div>
+        <div >
             
             <h1 className="font-bold">Cart Items</h1>
+            <div className="flex">
+            {
+                cartItems.map((Foods)=><FoodItem key={Foods.id} {...Foods} />
+
+                )
+            }
+            </div>
         </div>
     )
 }

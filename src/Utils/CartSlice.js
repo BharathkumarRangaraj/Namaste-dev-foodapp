@@ -4,12 +4,13 @@ import store from "./Store";
 const CartSlice=createSlice({
     name:'cart',
     initialState:{
-        items:['apple','orange']
+        items:[]
     },
 
     reducers:{
 
         addItem:(state,action)=>{
+            
             state.items.push(action.payload);
         },
         removeItem:(state,action)=>{

@@ -1,4 +1,3 @@
-
 import { useParams } from "react-router-dom";
 import { Swiggy_URL } from "../Utils/Constants";
 import Shimmer from "./Shimmer";
@@ -12,13 +11,17 @@ const RestrauntMenu=()=>{
     const {id}=useParams();
     const rest=useRestrauntMenu(id);
     const dispatch=useDispatch();
+    
 
 
-    const handlechange=()=>{
-        dispatch(addItem('grapes'))
+    const addFootItem=(rest)=>{
+        dispatch(addItem(rest))
 
 
     }    
+    
+    console.log(addFootItem,'food')
+
     return !rest?(<Shimmer/>):(
         <div className="flex">
              
@@ -37,7 +40,7 @@ const RestrauntMenu=()=>{
 
             </div>
             <div>
-                <button className="bg-green-300 cursor-pointer" onClick={handlechange}> Add item</button>
+                <button className="bg-green-300 cursor-pointer" onClick={()=>addFootItem(rest)}> Add item</button>
             </div>
             <div>
             

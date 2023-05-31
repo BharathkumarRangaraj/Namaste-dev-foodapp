@@ -1,10 +1,12 @@
 import { useState,useEffect } from "react"; 
-import { RestrauntMenu_URL } from "../Utils/Constants";
+import { RestrauntMenu_URL} from "../Utils/Constants";
+
 
 
 const useRestrauntMenu=(id)=>{
 
     const [res,setres]=useState(null);
+    const [restaurantMenuItems,setRestaurantMenuItems]=useState([]);
 
     useEffect(()=>{
         getRestrauntinfo();
@@ -14,7 +16,12 @@ const useRestrauntMenu=(id)=>{
         const data=await fetch(RestrauntMenu_URL+id);
     const json= await data?.json();
     console.log(json?.data?.cards[0]?.card?.card?.info);
-    setres(json?.data?.cards[0]?.card?.card?.info)
+    setres(json?.data?.cards[0]?.card?.card?.info);
+
+    
+
+
+    
     }
     return res;
 }
